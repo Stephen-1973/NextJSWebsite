@@ -4,7 +4,7 @@ import { useColorModeValue } from '@chakra-ui/react';
 
 
 function DraggableText() {
-  const bgDraggableText = useColorModeValue('gray.100','gray.800')
+  const bgDraggableText = useColorModeValue('gray.800','gray.100')
   return (
     <>
     <motion.div drag style={{ position: 'absolute' }}>
