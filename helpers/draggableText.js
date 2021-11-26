@@ -8,7 +8,7 @@ function DraggableText() {
   const draggableText = useColorModeValue("gray.800",'gray.100')
   return (
     <>
-    <motion.div drag style={{ position: 'absolute' }}>
+    <motion.div drag style={{ position: 'absolute',zIndex:"1000" }}>
         <Heading fontWeight='regular' textTransform='uppercase' fontSize={['8vw','6vw','4.5vw']} color={draggableText} bg={bgDraggableText}>My WorkSpace</Heading>
       </motion.div>
       <motion.svg style={{ position: 'absolute', transform: 'translate(7rem,5.5rem)' }} initial={{opacity:1}} animate={{opacity: 0}} transition={{duration: 4}} xmlns="http://www.w3.org/2000/svg" width="160" height="91.479" viewBox="0 0 187.111 91.479">
