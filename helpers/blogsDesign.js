@@ -6,7 +6,7 @@ function BlogsDesign({ BlogData }) {
   const bgBoxColorMode = useColorModeValue('gray.100', 'gray.700')
   const textColorMode = useColorModeValue('gray.900', 'gray.50')
   return (
-      <Box bg={bgBoxColorMode} minW='15rem' margin={['auto','0 1rem 1rem .5rem','0']} maxW='17rem' w='40vw' h='fit-content'>
+      <Box bg={bgBoxColorMode} minW='15rem' margin={['auto','0 1rem 1rem .5rem','0 1rem 1rem .5rem']} maxW='17rem' w='40vw' h='fit-content'>
             <Image isLazy={true} alt={BlogData.imageDescription} width="1000%" height="700%" src={BlogData.imageSource} />
             <HStack float=
               'right'>
