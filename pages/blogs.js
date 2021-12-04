@@ -18,7 +18,7 @@ function Blogs({ docs }) {
           display: 'flex', flexDirection: 'row', flexWrap: 'wrap',margin: '2rem 0 0 1rem'
         }}>
            { blogs[0].map(blog => {
-             return <div onClick={() => { router.push(`/read/${blog.title}`) }} key={blog.id}>
+             return <div style={{margin:'auto'}} onClick={() => { router.push(`/read/${blog.title}`) }} key={blog.id}>
                <BlogsDesign BlogData={blog} />
              </div>
             })}
