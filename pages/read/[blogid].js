@@ -110,9 +110,9 @@ function BlogId({ data }) {
         </Center>
         <Stack></Stack>
       </Box>
-      <Box w={'100vw'} id='root'>
+      <div id='root'>
         
-      </Box>
+      </div>
       {
         !(lastBlog) && (
           <NextLink href={`/read/${nextBlog.id}`} passHref>
