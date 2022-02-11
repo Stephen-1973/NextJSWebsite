@@ -19,6 +19,7 @@ import NavBar from '../../sections/NavBar';
 import { useEffect,useState } from 'react'
 import NextLink from 'next/link';
 import CardDisplay from './components/prev-next-blog-cards';
+import Script from 'next/script';
 
 
 
@@ -91,9 +92,10 @@ function BlogId({ data }) {
         )
       }
       <Head>
-        <link rel='stylesheet' href={doc.cssRef}/>
+        {/* <link rel='stylesheet' href={doc.cssRef}/> */}
         <title>{doc.title}</title>
         <meta name='description' content={doc.pageDescription}></meta>
+        <script defer='defer' src={doc.scriptSource}></script>
       </Head>
       <Box visibility={'hidden'}>
         <HStack></HStack>
@@ -108,7 +110,7 @@ function BlogId({ data }) {
         </Center>
         <Stack></Stack>
       </Box>
-      <Box w={'100vw'} dangerouslySetInnerHTML={{__html: doc.message}}>
+      <Box w={'100vw'} id='root'>
         
       </Box>
       {

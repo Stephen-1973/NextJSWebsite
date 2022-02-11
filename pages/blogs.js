@@ -18,7 +18,7 @@ function Blogs({ docs }) {
     readTime: "3 mins read",
     time: new Date
   }]
-  const [blogs, setBlogs] = useState([JSON.parse(docs)[0] || notFoundBlogDetails])
+  const [blogs, setBlogs] = useState([JSON.parse(docs) || notFoundBlogDetails])
   const LinkItem = ({ href, path, _target, children, ...props }) => {
     const active = path === href
     const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')

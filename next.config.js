@@ -1,6 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['codding.in','stephen-1973.github.io','images.unsplash.com'],
+    domains: [
+      'pbs.twimg.com','codding.in','stephen-1973.github.io','images.unsplash.com'],
   }
 }

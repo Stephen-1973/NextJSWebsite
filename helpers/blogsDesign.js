@@ -15,8 +15,7 @@ export default function blogPostWithImage({BlogData}) {
   return (
     <Center m='auto'>
       <Box
-        height='50vh'
-        maxHeight={'30rem'}
+        maxH='fit-content'
         maxW={'445px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
