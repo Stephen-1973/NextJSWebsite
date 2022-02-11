@@ -14,7 +14,7 @@ function About() {
           <br/>
           My carrer started out has a Data Scientist. I first worked in a small startup where I developed my interest towards Web Developm...
         </Text>
-        <Button my='1rem' transition='all .2s ease-out' colorScheme='teal' variant='outline' _hover={{color:'white',bg:'teal',colorScheme:'teal',varaint:'solid'}}>
+        <Button _focus={{textDecoration:'none'}} my='1rem' transition='all .2s ease-out' colorScheme='teal' variant='outline' _hover={{color:'white',bg:'teal',colorScheme:'teal',varaint:'solid'}}>
           Read More &rarr;
         </Button>
       </motion.div>

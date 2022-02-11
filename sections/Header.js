@@ -22,7 +22,7 @@ function Header() {
                 <Text>I know it&#39;s a <span style={{ fontWeight: 'bold' }}>flex to show off my desk setup</span> as the first thing on my website 😅. But it&#39;s the <span style={{ fontWeight: 'bold' }}>best thing I have in my life</span> and also <span style={{ fontWeight: 'bold' }}>I don&#39;t have any other ideas</span> to make my site better <span style={{ fontWeight: 'bold' }}>than displaying my absolute fortune desk setup</span></Text>
               </motion.div>
               <motion.div animate={{transform: 'translateY(3rem)'}} transition={{duration: 0.4}} initial={{transform: 'translateY(0rem)'}} exit={{transform: 'translateY(0rem)'}}>
-                <Button role='group' variant='outline' borderBottom='.2rem solid teal' transition='all .2s' _hover={{backgroundPosition: "100%",color:'white'}} backgroundSize='230%' bgImage={buttonBg}>
+                <Button _focus={{textDecoration:'none'}} role='group' variant='outline' borderBottom='.2rem solid teal' transition='all .2s' _hover={{backgroundPosition: "100%",color:'white'}} backgroundSize='230%' bgImage={buttonBg}>
                   Know more <Text transition='all .2s ease-in' ml='.3rem' _groupHover={{marginLeft:".5rem"}}>&rarr;</Text>
                 </Button>
               </motion.div>

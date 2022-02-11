@@ -45,8 +45,8 @@ function Blogs({ docs }) {
         }}>
            { blogs[0].map(blog => {
              return (
-             <NextLink key={blog.id} href={`/read/${blog.id}`}>
-               <Link mx='1rem' _hover={{textDecoration:'none'}}>
+             <NextLink key={blog.id} passHref href={`/read/${blog.id}`}>
+               <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} mx='1rem' _hover={{textDecoration:'none'}}>
                 <BlogsDesign BlogData={blog}/>
                </Link>
              </NextLink>)

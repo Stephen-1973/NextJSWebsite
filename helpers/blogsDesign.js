@@ -46,7 +46,7 @@ export default function blogPostWithImage({BlogData}) {
             fontWeight={800}
             fontSize={'sm'}
             letterSpacing={1.1}>
-            {BlogData.tags.map(tag => <Text>#{tag}</Text>)}
+            {BlogData.tags.map(tag => <Text key={tag}>#{tag}</Text>)}
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}

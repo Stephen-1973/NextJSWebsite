@@ -11,22 +11,22 @@ import NextLink from 'next/link'
 
 function NavBar() {
   const LinkItem = ({ href, path, _target, children, ...props }) => {
-  const active = path === href
-  const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
-  return (
-    <NextLink href={href} passHref>
-      <Link
-        p={2}
-        bg={active ? 'grassTeal' : undefined}
-        color={active ? '#202023' : inactiveColor}
-        target={_target}
-        {...props}
-      >
-        {children}
-      </Link>
-    </NextLink>
-  )
-}
+    const active = path === href
+    const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+    return (
+      <NextLink href={href} passHref>
+        <Link
+          p={2}
+          bg={active ? 'grassTeal' : undefined}
+          color={active ? '#202023' : inactiveColor}
+          target={_target}
+          {...props}
+        >
+          {children}
+        </Link>
+      </NextLink>
+    )
+  }
 
   const bgSvg = useColorModeValue('black', '#fff')
 
@@ -62,13 +62,13 @@ function NavBar() {
             <Heading variant='page-title'>Stephen</Heading>
             <HStack ml='2rem' spacing={5} display={{ base: 'none', md: 'flex' }}>
               <NextLink passHref href='/about'>
-                <Link>About</Link>
+                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>About</Link>
               </NextLink>
               <NextLink href='/work' passHref>
-                <Link>Work</Link>
+                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Work</Link>
               </NextLink>
               <NextLink href='/blogs' passHref>
-                <Link>Blogs</Link>
+                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
               </NextLink>
               <NextLink href='https://github.com/stephen-1973/NextJsWebsite'>
                 <HStack>
