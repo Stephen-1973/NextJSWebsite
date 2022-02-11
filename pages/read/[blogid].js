@@ -95,8 +95,8 @@ function BlogId({ data }) {
         {/* <link rel='stylesheet' href={doc.cssRef}/> */}
         <title>{doc.title}</title>
         <meta name='description' content={doc.pageDescription}></meta>
-        <script defer='defer' src={doc.scriptSource}></script>
       </Head>
+      <Script src={doc.scriptSource} strategy='lazyOnload'></Script>
       <Box visibility={'hidden'}>
         <HStack></HStack>
         <VStack></VStack>
@@ -126,6 +126,7 @@ function BlogId({ data }) {
       }
      
     </Box>
+   
   )
 }
 
