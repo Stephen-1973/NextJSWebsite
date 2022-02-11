@@ -9,6 +9,7 @@ export default function Home() {
     <>
       <Head>
         <title>Stephen | Full Stack Web Developer</title>
+        {/* <link href="https://stephen-1973.github.io/static/css/main.53262e43.chunk.css" rel="stylesheet"></link> */}
         <meta name="Keywords" content="Stepeh Ex Web Developer 12 years of work experience Worked in FAANG"></meta>
       </Head>
       <NavBar/>

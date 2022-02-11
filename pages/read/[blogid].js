@@ -1,14 +1,45 @@
+// @ts-nocheck
 import { getDocs, collection, query, where,onSnapshot } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import { HStack,Box,Text,IconButton } from '@chakra-ui/react';
-import Head from 'next/head'
-import {TriangleDownIcon,ViewIcon} from '@chakra-ui/icons'
+import { 
+  HStack,
+  Box,
+  Text,
+  Center,
+  Heading,
+  VStack,
+  Stack,
+  Flex,
+  SimpleGrid,
+  GridItem,
+  Link
+} from '@chakra-ui/react';
+import Head from 'next/head';
 import NavBar from '../../sections/NavBar';
 import { useEffect,useState } from 'react'
-import router from 'next/router';
+import NextLink from 'next/link';
+import CardDisplay from './components/prev-next-blog-cards';
+
 
 
 function BlogId({ data }) {
+  const LinkItem = ({ href, path, _target, children, ...props }) => {
+    const active = path === href
+    const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+    return (
+      <NextLink href={href} passHref>
+        <Link
+          p={2}
+          bg={active ? 'grassTeal' : undefined}
+          color={active ? '#202023' : inactiveColor}
+          target={_target}
+          {...props}
+        >
+          {children}
+        </Link>
+      </NextLink>
+    )
+  }
 
   const [firstBlog, setFirstBlog] = useState(false)
   const [nextBlog, setNextBlog] = useState([])
@@ -43,24 +74,56 @@ function BlogId({ data }) {
       }
     }
     fetchBlogs()
-  }, [doc])
+  }, [data])
+
 
   return (
-    <>
+    <Box maxW='100rem' m={'auto'}>
       <NavBar />
-      <Box my={10}  w='100%' display='flex' justifyContent='space-evenly'>
-        <IconButton onClick={()=> {router.push(`/read/${prevBlog.title}`)}} opacity={firstBlog && ('0')} visibility={firstBlog && ('hidden')} transform='rotate(90deg)' icon={<TriangleDownIcon/>}></IconButton>
-        <IconButton onClick={()=> {router.push(`/blogs`)}} icon={<ViewIcon />}></IconButton>
-        <IconButton opacity={lastBlog && ('0')} visibility={lastBlog && ('hidden')} onClick={()=> {router.push(`/read/${nextBlog.title}`)}} transform="rotate(-90deg)" icon={<TriangleDownIcon/>}></IconButton>
-      </Box>
+      {
+        !(firstBlog) && (
+        
+          <NextLink passHref href={`/read/${prevBlog.id}`}>
+            <Link _hover={{textDecoration:'none'}} _active={{textDecoration:'none'}} _focus={{textDecoration:'none'}}>
+            <CardDisplay imageSrc={prevBlog.imageSource} Title={prevBlog.title} Description={prevBlog.pageDescription} prevBlog={true}/>
+            </Link>
+          </NextLink>
+        )
+      }
       <Head>
         <link rel='stylesheet' href={doc.cssRef}/>
         <title>{doc.title}</title>
-        <meta name='description' description={doc.pageDescription}></meta>
+        <meta name='description' content={doc.pageDescription}></meta>
       </Head>
-      <div dangerouslySetInnerHTML={{ __html: doc.message }}>
-      </div>
-    </>
+      <Box visibility={'hidden'}>
+        <HStack></HStack>
+        <VStack></VStack>
+        <SimpleGrid>
+          <GridItem></GridItem>
+        </SimpleGrid>
+        <Center>
+          <Flex></Flex>
+          <Text>Stephen</Text>
+          <Heading>Stephen</Heading>
+        </Center>
+        <Stack></Stack>
+      </Box>
+      <Box w={'100vw'} dangerouslySetInnerHTML={{__html: doc.message}}>
+        
+      </Box>
+      {
+        !(lastBlog) && (
+          <NextLink href={`/read/${nextBlog.id}`} passHref>
+            <Link _hover={{textDecoration:'none'}} _active={{textDecoration:'none'}} _focus={{textDecoration:'none'}}>
+              <Box transform={['translateX(7%)','0','translateX(45%)']}>
+                <CardDisplay imageSrc={nextBlog.imageSource} Title={nextBlog.title} Description={nextBlog.pageDescription} nextBlog={true}/>
+              </Box>
+            </Link>
+          </NextLink>
+        )
+      }
+     
+    </Box>
   )
 }
 
@@ -70,7 +133,7 @@ export default BlogId
 export async function getServerSideProps(context) {
   const { blogid } = context.query
 
-  const getDoc = await getDocs(query(collection(db, 'blogs'), where('title', '==', blogid)));
+  const getDoc = await getDocs(query(collection(db, 'blogs'), where('id', '==', blogid)));
   const fetchedDoc = getDoc.docs[0].data()
   return {
     props: {

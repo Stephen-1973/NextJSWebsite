@@ -29,7 +29,7 @@ function About() {
         <Heading mx='10vw' position='absolute' color={textColor} fontSize='11vw'>familiar</Heading>
       </motion.div>
       <Image alt='Stephen Logo' src='/share.jpeg' h={['30vh', '50vh', '70vh']} w='100vw' objectFit='contain' my={10} mx={[5, 5]} />
-      <motion.div initial={{y:0,opacity: 0}} animate={{y: -20,opacity: 1}} exit={{y:0,opactiy: 0}} key={useColorModeValue('purple','yellow')} transition={{duration: 1}}>
+      <motion.div initial={{y:0,opacity: 0}} animate={{y: -20,opacity: 1}} exit={{y:0, opacity:0}} key={useColorModeValue('purple','yellow')} transition={{duration: 1}}>
         <Text fontSize={['1rem','1.2rem','2rem']} maxW='80vw' m='auto' textAlign='center'>
           I don&#39;t want my viewers to read anymore of hard-coded paragraphes.
           Let&#39;s <span style={{ cursor: 'pointer', fontSize: '200%' }} onClick={() => { setChat(!chat) }}>chat</span> for real now.
@@ -46,7 +46,7 @@ function About() {
           <form onSubmit={() => { setChat(false) }}>
           <FormControl  display='flex' flexDirection='row' justifyContent='space-evenly' position='absolute' bottom='0' w='100%'>
             <Input color='gray.400' w='85%' placeholder='Ask me .. Trust me I will respond' />
-            <IconButton type='submit' bg={sendButtonBg} icon={<CheckCircleIcon />}/>
+            <IconButton aria-label='' type='submit' bg={sendButtonBg} icon={<CheckCircleIcon />}/>
           </FormControl>
           </form>
           </Box>

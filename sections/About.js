@@ -5,22 +5,20 @@ import { motion,AnimatePresence } from 'framer-motion';
 
 function About() {
   return (
-    <div bg='black'>
-      <AnimatePresence initial={true}>
-        <motion.div style={{ textAlign: 'center'}} animate={{transform: 'translateY(0rem)'}} initial={{transform: "translateY(10rem)"}} transition={{duration: 1}} exit={{transform: 'translateY(10rem)'}}>
-          <Heading py={10} textTransform='uppercase' fontWeight='regular'>About me</Heading>
-          <Text m='auto' maxW={['80%','80%','60rem']} textAlign='left'>
-            Hey! I am Stephen. It&#39;s great that you wanna know about me. I am an ex Amazon Full Stack Developer. I have 12 years of experience in the DataScience and Web Development.
-            <br />
-            <br/>
-            My carrer started out has a Data Scientist. I first worked in a small startup where I developed my interest towards Web Developm...
-          </Text>
-          <Button my='1rem' transition='all .2s ease-out' colorScheme='teal' variant='outline' _hover={{color:'white',bg:'teal',colorScheme:'teal',varaint:'solid'}}>
-            Read More &rarr;
-          </Button>
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <AnimatePresence initial={true}>
+      <motion.div style={{ textAlign: 'center'}} animate={{transform: 'translateY(0rem)'}} initial={{transform: "translateY(10rem)"}} transition={{duration: 1}} exit={{transform: 'translateY(10rem)'}}>
+        <Heading py={10} textTransform='uppercase' fontWeight='regular'>About me</Heading>
+        <Text m='auto' maxW={['80%','80%','60rem']} textAlign='left'>
+          Hey! I am Stephen. It&#39;s great that you wanna know about me. I am an ex Amazon Full Stack Developer. I have 12 years of experience in the DataScience and Web Development.
+          <br />
+          <br/>
+          My carrer started out has a Data Scientist. I first worked in a small startup where I developed my interest towards Web Developm...
+        </Text>
+        <Button my='1rem' transition='all .2s ease-out' colorScheme='teal' variant='outline' _hover={{color:'white',bg:'teal',colorScheme:'teal',varaint:'solid'}}>
+          Read More &rarr;
+        </Button>
+      </motion.div>
+    </AnimatePresence>
   )
 }
 

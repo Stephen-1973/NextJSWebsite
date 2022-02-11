@@ -19,7 +19,7 @@ function NavBar() {
         p={2}
         bg={active ? 'grassTeal' : undefined}
         color={active ? '#202023' : inactiveColor}
-        _target={_target}
+        target={_target}
         {...props}
       >
         {children}
@@ -56,21 +56,21 @@ function NavBar() {
       <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{y:-20,opacity:0}} transition={{ duration: 1 }}>
         <HStack justifyContent='space-between' w='80%' m='auto'>
           <Flex alignItems='center' flexDirection='row'>
-            <IconButton bg='transparent' _hover={{bg: 'transparent'}}>
+            <IconButton aria-label='logo' bg='transparent' _hover={{bg: 'transparent'}}>
               <Icon as={Logo}/>
             </IconButton>
             <Heading variant='page-title'>Stephen</Heading>
             <HStack ml='2rem' spacing={5} display={{ base: 'none', md: 'flex' }}>
-              <NextLink role='group' href='/about'>
+              <NextLink passHref href='/about'>
                 <Link>About</Link>
               </NextLink>
-              <NextLink href='/work'>
+              <NextLink href='/work' passHref>
                 <Link>Work</Link>
               </NextLink>
-              <NextLink href='/blogs'>
+              <NextLink href='/blogs' passHref>
                 <Link>Blogs</Link>
               </NextLink>
-              <NextLink href='https://github.com/craftzdog/craftzdog-homepage'>
+              <NextLink href='https://github.com/stephen-1973/NextJsWebsite'>
                 <HStack>
                   <GithubLogo />
                   <Link>
@@ -95,14 +95,14 @@ function NavBar() {
                     <MenuItem as={Link}>About</MenuItem>
                   </NextLink>
                   <NextLink href="/work" passHref>
-                    <MenuItem as={Link}>Works</MenuItem>
+                    <MenuItem as={Link}>Blogs</MenuItem>
                   </NextLink>
                   <NextLink href="/blogs" passHref>
-                    <MenuItem as={Link}>Blogs</MenuItem>
+                    <MenuItem as={Link}>Search</MenuItem>
                   </NextLink>
                   <MenuItem
                     as={Link}
-                    href="https://github.com/craftzdog/craftzdog-homepage"
+                    href="https://github.com/stephen-1973/NextJsWebsite"
                   >
                     View Source
                     </MenuItem>
