@@ -13,6 +13,7 @@ import NavBar from '../sections/NavBar';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { CheckCircleIcon } from '@chakra-ui/icons';
+import Head from 'next/head';
 
 
 function About() {
@@ -24,6 +25,11 @@ function About() {
   return (
     <>
       <NavBar/>
+      <Head>
+        <title>
+          About | Stephen
+        </title>
+      </Head>
       <motion.div initial={{y:0,opacity:0}} animate={{y:50,x:50,opacity:1}} key={textColor} exit={{y:0,opacity:0}} transition={{duration: 1}}>
         <Heading color={textColor} fontSize='11vw'>let&#39;s get</Heading>
         <Heading mx='10vw' position='absolute' color={textColor} fontSize='11vw'>familiar</Heading>

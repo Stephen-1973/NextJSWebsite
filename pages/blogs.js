@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BlogsDesign from '../helpers/blogsDesign';
 import NextLink from 'next/link';
 import {useColorModeValue,Link} from '@chakra-ui/react';
+import Head from 'next/head';
 
 
 
@@ -39,6 +40,11 @@ function Blogs({ docs }) {
   return (
     <>
       <Navbar />
+      <Head>
+        <title>
+          Blogs | Stephen
+        </title>
+      </Head>
       <AnimatePresence initial={true}>
         <motion.div initial={{y: 100, opacity: 0}} transition={{duration: 1}} animate={{y: 0,opacity: 1}} style={{
           display: 'flex', flexDirection: 'row', flexWrap: 'wrap',margin: '2rem 0 0 1rem'

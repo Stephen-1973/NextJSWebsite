@@ -91,25 +91,15 @@ function BlogId({ data }) {
           </NextLink>
         )
       }
+
+      
       <Head>
-        {/* <link rel='stylesheet' href={doc.cssRef}/> */}
         <title>{doc.title}</title>
         <meta name='description' content={doc.pageDescription}></meta>
       </Head>
+
       <Script src={doc.scriptSource} strategy='lazyOnload'></Script>
-      <Box visibility={'hidden'}>
-        <HStack></HStack>
-        <VStack></VStack>
-        <SimpleGrid>
-          <GridItem></GridItem>
-        </SimpleGrid>
-        <Center>
-          <Flex></Flex>
-          <Text>Stephen</Text>
-          <Heading>Stephen</Heading>
-        </Center>
-        <Stack></Stack>
-      </Box>
+
       <div id='root'>
         
       </div>
