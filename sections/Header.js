@@ -1,15 +1,14 @@
-import { Container,Box, Heading,Text,Button,Image,VStack,SimpleGrid,GridItem } from '@chakra-ui/react';
+import { Text,Button,Image,VStack,SimpleGrid,GridItem } from '@chakra-ui/react';
 import DraggableText from '../helpers/draggableText';
 import { motion, AnimatePresence } from 'framer-motion'
 import { useColorModeValue } from '@chakra-ui/react';
 
 function Header() {
   const buttonBg = useColorModeValue("linear-gradient(120deg, white 0%, white 50%, teal 50%)", 'linear-gradient(120deg, transparent 0%,#000 50%, teal 50%)')
-  
   return (
     <SimpleGrid columns={[1,1,2]} row={[2,2,1]} flexDirection='row' h={['70vh','65vh','50vh']} w='100%' mx='auto' mb={0} mt={10}>
       <GridItem position='relative' h='100%' w='80%' m='auto' alignItems='center' display='flex' justifyContent='center'>
-        <Image objectFit='cover' h='80%' w='100%' src='/bg.jpeg' alt='My WorkSpace' />
+            <Image objectFit='cover' h='80%' w='100%' src='/bg.jpeg' alt='My WorkSpace' />
         <DraggableText/>
       </GridItem>
       <GridItem h='fit-content' mx='auto' my={['0','0','auto']} display='flex'>
