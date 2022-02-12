@@ -2,25 +2,16 @@
 import { getDocs, collection, query, where,onSnapshot } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import { 
-  HStack,
   Box,
-  Text,
-  Center,
-  Heading,
-  VStack,
-  Stack,
-  Flex,
-  SimpleGrid,
-  GridItem,
-  Link
+  Link,
+  useColorModeValue
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import NavBar from '../../sections/NavBar';
 import { useEffect,useState } from 'react'
 import NextLink from 'next/link';
 import CardDisplay from './components/prev-next-blog-cards';
 import Script from 'next/script';
-
+import NavBar from '../../sections/BlogNavBar';
 
 
 function BlogId({ data }) {
@@ -76,11 +67,10 @@ function BlogId({ data }) {
     }
     fetchBlogs()
   }, [data])
-
-
+  
   return (
     <Box maxW='100rem' m={'auto'}>
-      <NavBar />
+      <NavBar blogUrl={`/read/${doc.id}`}/>
       {
         !(firstBlog) && (
         
@@ -92,7 +82,7 @@ function BlogId({ data }) {
         )
       }
 
-      
+
       <Head>
         <title>{doc.title}</title>
         <meta name='description' content={doc.pageDescription}></meta>
@@ -100,9 +90,11 @@ function BlogId({ data }) {
 
       <Script src={doc.scriptSource} strategy='lazyOnload'></Script>
 
-      <div id='root'>
-        
-      </div>
+      <Box mt='10'>
+        <div id='root'>
+          
+        </div>
+      </Box>
       {
         !(lastBlog) && (
           <NextLink href={`/read/${nextBlog.id}`} passHref>
