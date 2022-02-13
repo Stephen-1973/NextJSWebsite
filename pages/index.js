@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import NavBar from '../sections/NavBar';
 import Header from '../sections/Header';
-import About from '../sections/About';
+import About from '../sections/AboutSection';
 import ReadMyBlogs from '../sections/readMyBlogs';
 
 export default function Home() {

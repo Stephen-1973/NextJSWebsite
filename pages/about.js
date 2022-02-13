@@ -6,7 +6,8 @@ import {
   Box,
   FormControl,
   Input,
-  IconButton
+  IconButton,
+  Center
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import NavBar from '../sections/NavBar';
@@ -30,7 +31,10 @@ function About() {
           About | Stephen
         </title>
       </Head>
-      <motion.div initial={{y:0,opacity:0}} animate={{y:50,x:50,opacity:1}} key={textColor} exit={{y:0,opacity:0}} transition={{duration: 1}}>
+      <Center h='100vh'>
+        <Heading fontFamily='charter, Georgia, Cambria, "Times New Roman", Times, serif'>Page isn't ready yet.</Heading>
+      </Center>
+      {/* <motion.div initial={{y:0,opacity:0}} animate={{y:50,x:50,opacity:1}} key={textColor} exit={{y:0,opacity:0}} transition={{duration: 1}}>
         <Heading color={textColor} fontSize='11vw'>let&#39;s get</Heading>
         <Heading mx='10vw' position='absolute' color={textColor} fontSize='11vw'>familiar</Heading>
       </motion.div>
@@ -57,7 +61,7 @@ function About() {
           </form>
           </Box>
         </Box>
-      }
+      } */}
     </>
   )
 }

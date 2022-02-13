@@ -23,14 +23,14 @@ function PrevNextDisplay({prevBlog,nextBlog,Description,imageSrc,Title}) {
             </Box>
         )
     }
-        <Box boxShadow={'lg'} h='15vh' position={'relative'} w={{base:'90%',md:'50%'}}>
-            <HStack h='100%' bg={textBgColor} spacing='10' position={'relative'}>
-                <Image objectFit={'cover'} h='100%' width='60%' objectPosition='center' loading='lazy' src={imageSrc}/>
-                <VStack color={textColor} alignItems='flex-start'>
+        <Box boxShadow={'lg'} h={['25vh','25vh','20vh']} position={'relative'} w='fit-content'>
+            <HStack h='100%' bg={textBgColor} position={'relative'}>
+                <Image objectFit={'cover'} h={['80%','90%','100%']} w={['30%','50%','60%']} objectPosition='center' src={imageSrc}/>
+                <VStack alignItems='flex-start' color={textColor} w='45vw'>
                     <Heading fontSize='100%' as={"h4"}>
                         {Title}
                     </Heading>
-                    <Text fontSize={['2vw','2vw','.9vw']}>
+                    <Text fontSize={['95%']}>
                        {Description?.slice(0,100)}... &rarr;
                     </Text>
                 </VStack>

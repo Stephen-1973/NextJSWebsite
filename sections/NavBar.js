@@ -6,6 +6,7 @@ import { useColorModeValue } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons'
 
 import NextLink from 'next/link'
+import router from 'next/router';
 
 
 
@@ -56,7 +57,7 @@ function NavBar() {
       <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{y:-20,opacity:0}} transition={{ duration: 1 }}>
         <HStack justifyContent='space-between' w='80%' m='auto'>
           <Flex alignItems='center' flexDirection='row'>
-            <IconButton aria-label='logo' bg='transparent' _hover={{bg: 'transparent'}}>
+          <IconButton _focus={{outline:"none"}} onClick={() => {router.push('/')}} aria-label='logo' bg='transparent' _hover={{bg: 'transparent'}}>
               <Icon as={Logo}/>
             </IconButton>
             <Heading variant='page-title'>Stephen</Heading>

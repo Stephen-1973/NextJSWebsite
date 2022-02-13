@@ -3,6 +3,7 @@ import { getDocs, collection, query, where,onSnapshot } from 'firebase/firestore
 import { db } from '../../services/firebase';
 import { 
   Box,
+  Flex,
   Link,
   useColorModeValue
 } from '@chakra-ui/react';
@@ -97,13 +98,9 @@ function BlogId({ data }) {
       </Box>
       {
         !(lastBlog) && (
-          <NextLink href={`/read/${nextBlog.id}`} passHref>
-            <Link _hover={{textDecoration:'none'}} _active={{textDecoration:'none'}} _focus={{textDecoration:'none'}}>
-              <Box transform={['translateX(7%)','0','translateX(45%)']}>
-                <CardDisplay imageSrc={nextBlog.imageSource} Title={nextBlog.title} Description={nextBlog.pageDescription} nextBlog={true}/>
-              </Box>
-            </Link>
-          </NextLink>
+          <Box display='flex' alignItems='flex-end' justifyContent={'flex-end'}>
+            <CardDisplay imageSrc={nextBlog.imageSource} Title={nextBlog.title} Description={nextBlog.pageDescription} nextBlog={true}/>
+          </Box>
         )
       }
      
