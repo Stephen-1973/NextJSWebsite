@@ -9,6 +9,7 @@ import {
     Icon
 } from '@chakra-ui/react';
 import {ChevronLeftIcon, ChevronRightIcon} from '@chakra-ui/icons';
+import LazyLoad from 'react-lazyload';
 
 
 function PrevNextDisplay({prevBlog,nextBlog,Description,imageSrc,Title}) {
@@ -31,7 +32,7 @@ function PrevNextDisplay({prevBlog,nextBlog,Description,imageSrc,Title}) {
                         {Title}
                     </Heading>
                     <Text fontSize={['95%']}>
-                       {Description?.slice(0,100)}... &rarr;
+                    {Description?.slice(0,100)}... &rarr;
                     </Text>
                 </VStack>
             </HStack>

@@ -13,6 +13,7 @@ import NextLink from 'next/link';
 import CardDisplay from './components/prev-next-blog-cards';
 import Script from 'next/script';
 import NavBar from '../../sections/BlogNavBar';
+import LazyLoad from 'react-lazyload';
 
 
 function BlogId({ data }) {
@@ -38,6 +39,7 @@ function BlogId({ data }) {
   const [nextBlog, setNextBlog] = useState([])
   const [prevBlog, setPrevBlog] = useState([])
   const [lastBlog,setLastBlog] = useState(false)
+  const [showNextBlogs,setShowNextBlogs] = useState(false);
 
   const doc = JSON.parse(data)
 
@@ -73,7 +75,7 @@ function BlogId({ data }) {
     <Box maxW='100rem' m={'auto'}>
       <NavBar blogUrl={`/read/${doc.id}`}/>
       {
-        !(firstBlog) && (
+       (!(firstBlog) && showNextBlogs) && (
         
           <NextLink passHref href={`/read/${prevBlog.id}`}>
             <Link _hover={{textDecoration:'none'}} _active={{textDecoration:'none'}} _focus={{textDecoration:'none'}}>
@@ -89,7 +91,7 @@ function BlogId({ data }) {
         <meta name='description' content={doc.pageDescription}></meta>
       </Head>
 
-      <Script src={doc.scriptSource} strategy='lazyOnload'></Script>
+      <Script src={doc.scriptSource} strategy='afterInteractive' onLoad={() => {setShowNextBlogs(true)}}></Script>
 
       <Box mt='10'>
         <div id='root'>
@@ -97,10 +99,16 @@ function BlogId({ data }) {
         </div>
       </Box>
       {
-        !(lastBlog) && (
-          <Box display='flex' alignItems='flex-end' justifyContent={'flex-end'}>
-            <CardDisplay imageSrc={nextBlog.imageSource} Title={nextBlog.title} Description={nextBlog.pageDescription} nextBlog={true}/>
-          </Box>
+        (!(lastBlog) && showNextBlogs) && (
+          <LazyLoad>
+            <Box display='flex' alignItems='flex-end' justifyContent={'flex-end'}>
+              <NextLink href={`/read/${nextBlog.id}`} passHref>
+                <Link _hover={{textDecoration:'none'}} _active={{textDecoration:'none'}} _focus={{textDecoration:'none'}} w='fit-content'>
+                    <CardDisplay imageSrc={nextBlog.imageSource} Title={nextBlog.title} Description={nextBlog.pageDescription} nextBlog={true}/>
+                </Link>
+              </NextLink>
+            </Box>    
+          </LazyLoad>
         )
       }
      
