@@ -73,7 +73,7 @@ function BlogId({ data }) {
   
   return (
     <Box maxW='100rem' m={'auto'}>
-      <NavBar blogUrl={`/read/${doc.id}`}/>
+      <NavBar blogUrl={`/read/${doc.id}`} activeTab='Blogs'/>
       {
        (!(firstBlog) && showNextBlogs) && (
         

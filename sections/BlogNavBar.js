@@ -6,11 +6,11 @@ import { useColorModeValue } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons'
 
 import NextLink from 'next/link'
-import Router from 'next/router';
+import router from 'next/router';
 
 
 
-function NavBar({blogUrl}) {
+function NavBar({blogUrl,activeTab}) {
 
   const LinkItem = ({ href, path, _target, children, ...props }) => {
     const active = path === href
@@ -52,25 +52,34 @@ function NavBar({blogUrl}) {
 
   const GitHubLogoBg = useColorModeValue('black','white')
 
+
+  const activeStyles = {
+    borderRadius: "full",
+    color: useColorModeValue("white",'black'),
+    py: "1",
+    px: "3",
+    bg: useColorModeValue("black",'white')
+  }
+
   
   return (
     <AnimatePresence>
       <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{y:-20,opacity:0}} transition={{ duration: 1 }}>
         <HStack justifyContent='space-between' w='80%' m='auto'>
           <Flex alignItems='center' flexDirection='row'>
-            <IconButton _focus={{outline:"none"}} onClick={() => {Router.push('/')}} aria-label='logo' bg='transparent' _hover={{bg: 'transparent'}}>
+          <IconButton _focus={{outline:"none"}} onClick={() => {router.push('/')}} aria-label='logo' bg='transparent' _hover={{bg: 'transparent'}}>
               <Icon as={Logo}/>
             </IconButton>
             <Heading variant='page-title'>Stephen</Heading>
             <HStack ml='2rem' spacing={5} display={{ base: 'none', md: 'flex' }}>
               <NextLink passHref href='/about'>
-                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>About</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'About' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>About</Link>
               </NextLink>
               <NextLink href='/work' passHref>
-                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Work</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'Work' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Work</Link>
               </NextLink>
               <NextLink href='/blogs' passHref>
-                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'Blogs' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
               </NextLink>
               <NextLink href='https://github.com/stephen-1973/NextJsWebsite'>
                 <HStack>

@@ -39,7 +39,7 @@ function Blogs({ docs }) {
   }
   return (
     <>
-      <Navbar />
+      <Navbar activeTab='Blogs' />
       <Head>
         <title>
           Blogs | Stephen

@@ -11,7 +11,7 @@ export default function Home() {
         <title>Stephen | Full Stack Web Developer</title>
         <meta name='description' content='Welcome to my website. This website will be your gateway to build awesome e-commerce app.'/>
       </Head>
-      <NavBar/>
+      <NavBar activeTab={'/'}/>
       <Header />
       <ReadMyBlogs/>
       <About />

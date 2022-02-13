@@ -25,7 +25,7 @@ function About() {
 
   return (
     <>
-      <NavBar/>
+      <NavBar activeTab='About'/>
       <Head>
         <title>
           About | Stephen

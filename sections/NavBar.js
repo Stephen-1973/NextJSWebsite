@@ -10,7 +10,7 @@ import router from 'next/router';
 
 
 
-function NavBar() {
+function NavBar({activeTab}) {
   const LinkItem = ({ href, path, _target, children, ...props }) => {
     const active = path === href
     const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
@@ -51,6 +51,14 @@ function NavBar() {
 
   const GitHubLogoBg = useColorModeValue('black','white')
 
+  const activeStyles = {
+    borderRadius: "full",
+    color: useColorModeValue("white",'black'),
+    py: "1",
+    px: "3",
+    bg: useColorModeValue("black",'white')
+  }
+
   
   return (
     <AnimatePresence>
@@ -63,13 +71,13 @@ function NavBar() {
             <Heading variant='page-title'>Stephen</Heading>
             <HStack ml='2rem' spacing={5} display={{ base: 'none', md: 'flex' }}>
               <NextLink passHref href='/about'>
-                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>About</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'About' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>About</Link>
               </NextLink>
               <NextLink href='/work' passHref>
-                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Work</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'Work' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Work</Link>
               </NextLink>
               <NextLink href='/blogs' passHref>
-                <Link _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'Blogs' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
               </NextLink>
               <NextLink href='https://github.com/stephen-1973/NextJsWebsite'>
                 <HStack>
