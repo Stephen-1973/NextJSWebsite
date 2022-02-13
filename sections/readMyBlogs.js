@@ -24,8 +24,8 @@ function ReadMyBlogs() {
   const pickBg = useColorModeValue("rgba(255,255,255,0.4)","rgba(11, 11, 11, 0.4)")
   
   return (
-    <Box bgImage='url(/blog.avif),url(/blog.jpeg)' bgSize='cover' bgPos='center' w='80%' display='flex' justifyContent='center' py={10} mx='auto' backgroundColor='gray.200'>
-      <VStack alignItems='center' spacing={5}  w='60%' bg={pickBg} borderRadius={'lg'} p={6}>
+    <Box bgImage='url(/blog.avif),url(/blog.jpeg)' bgSize='cover' bgPos='center' w={['100%','100%','80%']} m='auto' display='flex' justifyContent='center' py={10} mx='auto' backgroundColor='gray.200'>
+      <VStack alignItems='center' spacing={5}  w={['90%','85%','80%']} bg={pickBg} borderRadius={'lg'} p={[3,3,6]}>
         <Text fontWeight='semibold'>
           You're an ordinary high school graduate with no cs degree willing to work at Google,Facebook or Apple.
           Then come join me and be a part of dynamic blog journey and get the skills you need for your own startup/Job.
