@@ -84,20 +84,17 @@ function BlogId({ data }) {
           </NextLink>
         )
       }
-
-
       <Head>
         <title>{doc.title}</title>
+        <link rel="stylesheet" href={doc?.cssRef} />
         <meta name='description' content={doc.pageDescription}></meta>
       </Head>
-
-      <Script src={doc.scriptSource} strategy='afterInteractive' onLoad={() => {setShowNextBlogs(true)}}></Script>
-
       <Box mt='10'>
         <div id='root'>
           
         </div>
       </Box>
+      <Script src={doc.scriptSource} strategy='lazyOnload' onLoad={() => {setShowNextBlogs(true)}}></Script>
       {
         (!(lastBlog) && showNextBlogs) && (
           <LazyLoad>

@@ -66,10 +66,19 @@ function Blogs({ docs }) {
 export default Blogs
 
 export async function getServerSideProps() {
-  const docs = await getDocs(query(collection(db, 'blogs'),where('status','==','Publish')));
   const fetchedDocs = []
-  const firebaseDocs = docs.docs
-  firebaseDocs.map(doc => fetchedDocs.push(doc.data()))
+  const beforeFirebase = new Date()
+  const docs = await getDocs(query(collection(db, 'blogs'),where('status','==','Publish')));
+  docs.docs.map(doc => fetchedDocs.push(doc.data()))
+  const afterFirebase = new Date()
+  const beforeAPI = new Date()
+  await fetch('http://localhost:3000/api/hello', { method: "GET", headers: { 'Content-Type': 'application/json','User-Agent': "Safari" } }).then((t) => t.json());
+  const afterAPI = new Date()
+  const firebaseTime = afterFirebase - beforeFirebase
+  const APITIME = afterAPI - beforeAPI
+  console.log(`Fetched Firebase docs in ${firebaseTime}`);
+  console.log(`Fetched API docs in ${APITIME}`);
+  console.log(`Time saved could be ${firebaseTime - APITIME}`);
   return {
     props: {
       docs: JSON.stringify(fetchedDocs)

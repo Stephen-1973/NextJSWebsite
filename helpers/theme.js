@@ -25,7 +25,8 @@ const components = {
   }
 }
 const fonts = {
-  heading: "'M PLUS Rounded 1c'"
+  heading: "'M PLUS Rounded 1c'",
+  body: "Roboto,Arial,Helvetica,sans-serif"
 }
 
 const theme = extendTheme({ config,styles,components,fonts })
