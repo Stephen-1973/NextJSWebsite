@@ -1,5 +1,5 @@
 {
-  "name": "nextblog",
+  "name": "stephens-website",
   "private": true,
   "scripts": {
     "dev": "next dev",
