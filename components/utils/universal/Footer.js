@@ -33,7 +33,7 @@ export default function SmallCentered() {
           </Heading>
         </HStack>
         <Stack direction={'row'} spacing={6}>
-          <Link href={'#'}>Home</Link>
+          <Link href={'/'}>Home</Link>
           <Link href={'/about'}>About</Link>
           <Link href={'/blogs'}>Blogs</Link>
           <Link href={'/contact'}>Contact</Link>
