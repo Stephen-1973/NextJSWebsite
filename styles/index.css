@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+   scrollbar-width: none;
+}
+.span {
+  color:#5EBAA6;
+}
+
+code,pre{font-size:.9rem!important}

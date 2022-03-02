@@ -1,20 +1,48 @@
-import Head from 'next/head'
-import NavBar from '../sections/NavBar';
-import Header from '../sections/Header';
-import About from '../sections/AboutSection';
-import ReadMyBlogs from '../sections/readMyBlogs';
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import Home from '../components/pages/Home/Home';
+import { db } from '../components/services/firebase';
 
-export default function Home() {
+
+function App() {
+
+  // async function postBlogs(data) {
+  //   const response = await fetch('http://localhost:3000/api/blogs', {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //     body: JSON.stringify({
+  //       data: data
+  //     })
+  //   });
+  //   const json = response.json();
+  //   return json;
+  // }
+  // async function fetchBlogs() {
+  //   const response = await fetch('/api/blogs', {
+  //     method: 'GET',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     }
+  //   });
+  //   const json = await response.json();
+  //   console.log(JSON.parse(json.data))
+  // }
+
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // useEffect(async () => {
+  //   const blogs = await getDocs(query(collection(db, 'blogs'), where('status', '==', 'Publish')));
+  //   const data = blogs.docs.slice(0,3).map(doc => doc.data());
+  //   await postBlogs(data);
+  //   await fetchBlogs();
+    
+  // }, [])
+
+
   return (
-    <>
-      <Head>
-        <title>Stephen | Full Stack Web Developer</title>
-        <meta name='description' content='Welcome to my website. This website will be your gateway to build awesome e-commerce app.'/>
-      </Head>
-      <NavBar activeTab={'/'}/>
-      <Header />
-      <ReadMyBlogs/>
-      <About />
-    </>
+    <Home />
   )
 }
+
+export default App
