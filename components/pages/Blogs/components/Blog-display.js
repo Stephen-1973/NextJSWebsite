@@ -106,7 +106,7 @@ export default function BlogDisplay() {
             key={firstBlogData} animate={animate} exit={exitPosition} transition={{duration: 0.6}}>
               <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>      
                   {
-                    firstBlogData?.map(blog => <NextLink href={blog.data().id} passHref key={blog.data().id}>
+                    firstBlogData?.map(blog => <NextLink href={`/read/${blog.data().id}`} passHref key={blog.data().id}>
                     <Link>
                       <BlogPostsWithImages BlogData={blog.data()} />
                     </Link>
@@ -121,7 +121,7 @@ export default function BlogDisplay() {
               <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>      
                   {
                 secondBlogData?.map(blog =>
-                  <NextLink href={blog.data().id} passHref key={blog.data().id}>
+                  <NextLink href={`/read/${blog.data().id}`} passHref key={blog.data().id}>
                     <Link>
                       <BlogPostsWithImages BlogData={blog.data()} />
                     </Link>
@@ -136,7 +136,7 @@ export default function BlogDisplay() {
             key={firstBlogData} animate={animate} exit={exitPosition} transition={{duration: 0.6}}>
               <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>      
                   {
-                    thirdBlogData?.map(blog => <NextLink href={blog.data().id} passHref key={blog.data().id}>
+                    thirdBlogData?.map(blog => <NextLink href={`/read/${blog.data().id}`} passHref key={blog.data().id}>
                     <Link>
                       <BlogPostsWithImages BlogData={blog.data()} />
                     </Link>

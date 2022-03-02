@@ -15,7 +15,6 @@ import Script from 'next/script';
 import NavBar from '../Blogs/components/Blog-navbar';
 import LazyLoad from 'react-lazyload';
 
-
 function BlogId({ data }) {
   const LinkItem = ({ href, path, _target, children, ...props }) => {
     const active = path === href
