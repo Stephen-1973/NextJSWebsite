@@ -1,4 +1,4 @@
-import ThemeToggleButton from '../../../utils/universal/utils/theme-toggle-button';
+import ThemeToggleButton from './utils/Blog-theme-toggle-button';
 import {
   HStack, Box, IconButton,Heading, Flex, Icon, Image, MenuList,Menu,MenuButton,MenuItem,Link, Text} from '@chakra-ui/react';
 import { AnimatePresence,motion } from 'framer-motion';
