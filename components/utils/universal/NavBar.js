@@ -62,7 +62,7 @@ function NavBar({activeTab}) {
               <NextLink href='/blogs' passHref>
                 <Link transition='all .2s ease-in' {...activeTab === 'Blogs' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
               </NextLink>
-              <NextLink href='https://github.com/stephen-1973/NextJsWebsite'>
+              <NextLink href='https://github.com/stephen-1973/MyHomePage'>
                 <HStack>
                   <GithubLogo />
                   <Link>
@@ -94,7 +94,7 @@ function NavBar({activeTab}) {
                   </NextLink>
                   <MenuItem
                     as={Link}
-                    href="https://github.com/stephen-1973/NextJsWebsite"
+                    href="https://github.com/stephen-1973/MyHomePage"
                   >
                     View Source
                     </MenuItem>

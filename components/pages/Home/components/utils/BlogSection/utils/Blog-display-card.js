@@ -1,4 +1,4 @@
-// _duplicate of NextJSWebsite/components/pages/Blogs/components/Blog-collage-display-design-template.js
+// _duplicate of MyHomePage/components/pages/Blogs/components/Blog-collage-display-design-template.js
 
 import Image from 'next/image';
 import {

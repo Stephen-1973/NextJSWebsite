@@ -73,16 +73,16 @@ function BlogNavBar({blogUrl,activeTab}) {
             </IconButton>
             <Heading onClick={() => Router.push('/')} cursor='pointer' variant='page-title'>Stephen</Heading>
             <HStack ml='2rem' spacing={5} display={{ base: 'none', md: 'flex' }}>
-              <NextLink passHref href='/about/'>
+              <NextLink passHref href='/about'>
                 <Link transition='all .2s ease-in' {...activeTab === 'About' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>About</Link>
               </NextLink>
               <NextLink href='/contact' passHref>
-                <Link transition='all .2s ease-in' {...activeTab === 'Work' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Work</Link>
+                <Link transition='all .2s ease-in' {...activeTab === 'Work' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Contact</Link>
               </NextLink>
               <NextLink href='/blogs' passHref>
                 <Link transition='all .2s ease-in' {...activeTab === 'Blogs' ? activeStyles : {padding:'0'}} _focus={{textDecoration:'none'}} _active={{textDecoration:'none'}} _hover={{textDecoration:'none'}}>Blogs</Link>
               </NextLink>
-              <NextLink href='https://github.com/stephen-1973/NextJsWebsite'>
+              <NextLink href='https://github.com/stephen-1973/MyHomePage'>
                 <HStack>
                   <GithubLogo />
                   <Link>
@@ -103,18 +103,18 @@ function BlogNavBar({blogUrl,activeTab}) {
                   aria-label="Options"
                 />
                 <MenuList>
-                  <NextLink href="/about/" passHref>
+                  <NextLink href="/about" passHref>
                     <MenuItem as={Link}>About</MenuItem>
                   </NextLink>
                   <NextLink href="/contact" passHref>
-                    <MenuItem as={Link}>Blogs</MenuItem>
+                    <MenuItem as={Link}>Contact</MenuItem>
                   </NextLink>
                   <NextLink href="/blogs" passHref>
-                    <MenuItem as={Link}>Search</MenuItem>
+                    <MenuItem as={Link}>Blogs</MenuItem>
                   </NextLink>
                   <MenuItem
                     as={Link}
-                    href="https://github.com/stephen-1973/NextJsWebsite"
+                    href="https://github.com/stephen-1973/MyHomePage"
                   >
                     View Source
                     </MenuItem>
