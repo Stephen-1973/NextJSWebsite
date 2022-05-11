@@ -4,10 +4,10 @@ import LazyLoad from "react-lazyload";
 export default function Card({ data }) {
   if (data.alternative) {
     return (
-      <Box w='95vw' m='auto' p={3} h='fit-content'>
+      <Box className='alternative-story' w='95vw' m='auto' p={3} h='fit-content'>
         <Stack flexDirection={['column', 'column', 'row']}>
           <Box w={['100%','100%','60%']}>
-            <VStack alignItems='flex-start' ml='3'>
+            <VStack className='alternative-story-details' alignItems='flex-start' ml='3'>
               <Heading>
                 {data.title}
               </Heading>
@@ -18,7 +18,7 @@ export default function Card({ data }) {
           </Box>
           <Box w={['100%','100%','45%']}>
             <LazyLoad>
-              <Image w='100%' alt='' src={data.src} />
+              <Image className='alternative-story-img' w='100%' alt='' src={data.src} />
             </LazyLoad>
           </Box>
         </Stack>
@@ -27,15 +27,15 @@ export default function Card({ data }) {
   } else {
     
     return (
-      <Box w='95vw' m='auto' p={3} h='fit-content'>
+      <Box className='story' w='95vw' m='auto' p={3} h='fit-content'>
         <Stack flexDirection={['column', 'column', 'row']}>
-          <Box w={['100%','100%','45%']} position={'relative'}>
+          <Box className='story-img' w={['100%','100%','45%']} position={'relative'}>
             <LazyLoad>
               <Image w='100%' alt='' src={data.src} />
             </LazyLoad>
           </Box>
           <Box w={['100%','100%','60%']}>
-            <VStack alignItems='flex-start' ml='3'>
+            <VStack className='story-details' alignItems='flex-start' ml='3'>
               <Heading>
                 {data.title}
               </Heading>

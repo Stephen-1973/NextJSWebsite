@@ -5,7 +5,9 @@ import { useColorModeValue } from '@chakra-ui/react';
 import Router from 'next/router';
 
 
+
 function Header() {
+  
   const buttonBg = useColorModeValue("linear-gradient(120deg, white 0%, white 50%, teal 50%)", 'linear-gradient(120deg, transparent 0%,#000 50%, teal 50%)')
   return (
     <SimpleGrid columns={[1,1,2]} row={[2,2,1]} h='fit-content' w='100%' mx='auto' my={10} spacing={[10 ,5,0]} alignItems='center' justifyContent={'center'}>

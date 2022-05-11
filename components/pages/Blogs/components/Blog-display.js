@@ -1,72 +1,67 @@
 // @ts-check
-import { Box, Button, HStack, VStack,Link, Heading, Center, Text,useColorModeValue } from "@chakra-ui/react";
+import { Box, Button, HStack, VStack, Link, Heading, Center, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { BoxStyles,buttonStyles,selectedButton } from "./utils/Styles";
-import {
-  where,
-  query,
-  collection,
-  getDocs
-} from '@firebase/firestore';
-import { db } from "../../../services/firebase";
+import { BoxStyles, buttonStyles, selectedButton } from "./utils/Styles";
 import BlogPostsWithImages from "../../Home/components/utils/BlogSection/utils/Blog-display-card";
 import { AnimatePresence, motion } from "framer-motion";
 import NextLink from 'next/link';
 
-export default function BlogDisplay() {
+export default function BlogDisplay({ kubBlogs, machineBlogs, otherBlogs }) {
   const [selected, setSelected] = useState("");
   const [firstBlogData, setFirstBlogData] = useState([]);
   const [secondBlogData, setSecondBlogData] = useState([]);
   const [thirdBlogData, setthirdBlogData] = useState([]);
 
-  const [kubBlogs, setKubBlogs] = useState([]);
-  const [machineBlogs, setMachineBlogs] = useState([]);
-  const [otherBlogs, setOtherBlogs] = useState([]);
 
-  const [firstTime, setFirstTime] = useState(true);
+  // const [firstTime, setFirstTime] = useState(true);
 
-  const getBlogs = async () => {
-    const kubBlogs = await getDocs(query(collection(db, "blogs"), where("tags", "array-contains-any", ["kubernetes", "microservices", "nodejs"])));
-    setKubBlogs(kubBlogs.docs);
-    const machineblogs = await getDocs(query(collection(db, "blogs"), where("tags", "array-contains-any", ["python",'machine-learning','deep-learning','reinforcement-learning','artificial-intelligence'])));
-    setMachineBlogs(machineblogs.docs);
-    const otherBlogs = await getDocs(query(collection(db, "blogs"), where("tags", "array-contains", "other")));
-    setOtherBlogs(otherBlogs.docs);
-    console.log('done')
-  }
+  // const getBlogs = async () => {
 
-  
+  //   // BEFORE GET STATIC PROPS
+  //   // const kubBlogs = await getDocs(query(collection(db, "blogs"), where("tags", "array-contains-any", ["kubernetes", "microservices", "nodejs"])));
+  //   // setKubBlogs(kubBlogs.docs);
+  //   // const machineblogs = await getDocs(query(collection(db, "blogs"), where("tags", "array-contains-any", ["python", 'machine-learning', 'deep-learning', 'reinforcement-learning', 'artificial-intelligence'])));
+  //   // setMachineBlogs(machineblogs.docs);
+  //   // const otherBlogs = await getDocs(query(collection(db, "blogs"), where("tags", "array-contains", "other")));
+  //   // setOtherBlogs(otherBlogs.docs);
+  //   // console.log('done')
+  // }
+
+
   useEffect(() => {
-    if (firstTime) {
-      getBlogs();
-      setFirstTime(false);
+    // if (firstTime) {
+    //   getBlogs();
+    //   setFirstTime(false);
+    // }
+    // else {
+    if (selected === "kubernetes") {
+      // DEBUGGING
+
+      // console.log("selected", selected);
+      // console.log("kubBlogs", kubBlogs.map(doc => doc.data()));
+
+      setFirstBlogData(kubBlogs);
+      setSecondBlogData(machineBlogs);
+      setthirdBlogData(otherBlogs);
+    } if (selected === "machine-learning") {
+      setFirstBlogData(machineBlogs);
+      setSecondBlogData(kubBlogs);
+      setthirdBlogData(otherBlogs);
+    } else if (selected === "other") {
+      // console.log("selected", selected);
+      setFirstBlogData(otherBlogs);
+      setSecondBlogData(machineBlogs);
+      setthirdBlogData(kubBlogs);
     }
-    else {
-      if (selected === "kubernetes") {
-        console.log("selected", selected);
-        console.log("kubBlogs", kubBlogs.map(doc=>doc.data()));
-        setFirstBlogData(kubBlogs);
-        setSecondBlogData(machineBlogs);
-        setthirdBlogData(otherBlogs);
-      } if (selected === "machine-learning") {
-        setFirstBlogData(machineBlogs);
-        setSecondBlogData(kubBlogs);
-        setthirdBlogData(otherBlogs);
-      } else if (selected === "other") {
-        console.log("selected", selected);
-        setFirstBlogData(otherBlogs);
-        setSecondBlogData(machineBlogs);
-        setthirdBlogData(kubBlogs);
-      }
-      console.log(
-        "FirstBlog",
-        firstBlogData.map(blog => blog.data().title)
-      );
-      console.log("Second blog", secondBlogData?.map(blog => blog.data().title));
-      console.log("other blog", thirdBlogData?.map(blog => blog.data().title));
-    }
-  }, [selected, firstBlogData, secondBlogData, thirdBlogData, firstTime, kubBlogs, machineBlogs, otherBlogs]); 
-  
+    // console.log(
+    //   "FirstBlog",
+    //   firstBlogData.map(blog => blog.data().title)
+    // );
+    // console.log("Second blog", secondBlogData?.map(blog => blog.data().title));
+    // console.log("other blog", thirdBlogData?.map(blog => blog.data().title));
+    // }
+  }, [selected, firstBlogData, secondBlogData, thirdBlogData, kubBlogs, machineBlogs, otherBlogs]);
+
   // framer-motion animations
 
   const initialPosition = {
@@ -83,18 +78,19 @@ export default function BlogDisplay() {
     transform: "translateY(-3rem)",
     opacity: 0
   }
-  const bg = useColorModeValue('gray.200','gray.700')
+
+
 
   return (
     <Box {...BoxStyles}>
       <HStack spacing={1}>
-        <Button {...buttonStyles} onClick={()=>setSelected("kubernetes")} { ...selected === "kubernetes" && {...selectedButton} }>
+        <Button {...buttonStyles} onClick={() => setSelected("kubernetes")} {...selected === "kubernetes" && { ...selectedButton }}>
           Kubernetes
         </Button>
-        <Button {...buttonStyles} onClick={()=>setSelected("machine-learning")} { ...selected === "machine-learning" && {...selectedButton} }>
+        <Button {...buttonStyles} onClick={() => setSelected("machine-learning")} {...selected === "machine-learning" && { ...selectedButton }}>
           Machine Learning
         </Button>
-        <Button {...buttonStyles} onClick={()=>setSelected("other")} { ...selected === "other" && {...selectedButton} }>
+        <Button {...buttonStyles} onClick={() => setSelected("other")} {...selected === "other" && { ...selectedButton }}>
           Other
         </Button>
       </HStack>
@@ -102,53 +98,53 @@ export default function BlogDisplay() {
 
       <VStack mt='5' spacing={5}>
         <AnimatePresence initial={false}>
-            <motion.div style={{width: "100%"}} initial={initialPosition} // @ts-ignore
-            key={firstBlogData} animate={animate} exit={exitPosition} transition={{duration: 0.6}}>
-              <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>      
-                  {
-                    firstBlogData?.map(blog => <NextLink href={`/read/${blog.data().id}`} passHref key={blog.data().id}>
-                    <Link>
-                      <BlogPostsWithImages BlogData={blog.data()} />
-                    </Link>
-                  </NextLink>)
-                  }
-              </HStack>
+          <motion.div style={{ width: "100%" }} initial={initialPosition} // @ts-ignore
+            key={firstBlogData} animate={animate} exit={exitPosition} transition={{ duration: 0.6 }}>
+            <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>
+              {
+                firstBlogData?.map(blog => <NextLink href={`/read/${blog.id}`} passHref key={blog.id}>
+                  <Link>
+                    <BlogPostsWithImages BlogData={blog} />
+                  </Link>
+                </NextLink>)
+              }
+            </HStack>
           </motion.div>
         </AnimatePresence>
         <AnimatePresence initial={false}>
-            <motion.div style={{width: "100%"}} initial={initialPosition} // @ts-ignore
-            key={firstBlogData} animate={animate} exit={exitPosition} transition={{duration: 0.6}}>
-              <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>      
-                  {
+          <motion.div style={{ width: "100%" }} initial={initialPosition} // @ts-ignore
+            key={firstBlogData} animate={animate} exit={exitPosition} transition={{ duration: 0.6 }}>
+            <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>
+              {
                 secondBlogData?.map(blog =>
-                  <NextLink href={`/read/${blog.data().id}`} passHref key={blog.data().id}>
+                  <NextLink href={`/read/${blog.id}`} passHref key={blog.id}>
                     <Link>
-                      <BlogPostsWithImages BlogData={blog.data()} />
+                      <BlogPostsWithImages BlogData={blog} />
                     </Link>
                   </NextLink>
                 )
-                  }
-              </HStack>
+              }
+            </HStack>
           </motion.div>
         </AnimatePresence>
-              <AnimatePresence initial={false}>
-            <motion.div style={{width: "100%"}} initial={initialPosition} // @ts-ignore
-            key={firstBlogData} animate={animate} exit={exitPosition} transition={{duration: 0.6}}>
-              <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>      
-                  {
-                    thirdBlogData?.map(blog => <NextLink href={`/read/${blog.data().id}`} passHref key={blog.data().id}>
-                    <Link>
-                      <BlogPostsWithImages BlogData={blog.data()} />
-                    </Link>
-                  </NextLink>)
-                  }
-              </HStack>
+        <AnimatePresence initial={false}>
+          <motion.div style={{ width: "100%" }} initial={initialPosition} // @ts-ignore
+            key={firstBlogData} animate={animate} exit={exitPosition} transition={{ duration: 0.6 }}>
+            <HStack alignItems='flex-start' justifyContent='flex-start' w='full' overflowX='auto'>
+              {
+                thirdBlogData?.map(blog => <NextLink href={`/read/${blog.id}`} passHref key={blog.id}>
+                  <Link>
+                    <BlogPostsWithImages BlogData={blog} />
+                  </Link>
+                </NextLink>)
+              }
+            </HStack>
           </motion.div>
         </AnimatePresence>
       </VStack>
       <Box id='more' {...BoxStyles} h='fit-content'>
         <Center>
-           <Heading as='h1'>
+          <Heading as='h1'>
             Why should you read my blogs?
           </Heading>
         </Center>
@@ -162,3 +158,4 @@ export default function BlogDisplay() {
     </Box>
   )
 }
+

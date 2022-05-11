@@ -18,7 +18,7 @@ export default function BlogPostsWithImages({ BlogData }) {
     <Center minW='24rem' mx={3}>
       <Box
         transition='all .4s'
-        _groupHover={{ boxShadow:'lg'}}
+        _groupHover={{ boxShadow: 'lg' }}
         maxH='fit-content'
         maxW={'445px'}
         w={'full'}
@@ -36,7 +36,7 @@ export default function BlogPostsWithImages({ BlogData }) {
           <LazyLoad once>
             <Image
               src={
-                BlogData.imageSource || 
+                BlogData.imageSource ||
                 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
               }
               layout={'fill'}
@@ -52,15 +52,15 @@ export default function BlogPostsWithImages({ BlogData }) {
             {BlogData.title}
           </Heading>
           <Text color={'gray.500'}>
-            {BlogData.pageDescription?.slice(0,100)}... &rarr;
+            {BlogData.pageDescription?.slice(0, 100)}... &rarr;
           </Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text fontWeight={600}>Stephen</Text>
-            <Text color={'gray.500'}>{new Date(BlogData.time.seconds*1000).toDateString()} · {BlogData.readTime}</Text>
+            <Text color={'gray.500'}>{new Date(BlogData.time.seconds * 1000).toDateString()} · {BlogData.readTime}</Text>
           </Stack>
-        {/* Add likes and thumbsup option */}
+          {/* Add likes and thumbsup option */}
         </Stack>
       </Box>
     </Center>

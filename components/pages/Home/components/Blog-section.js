@@ -1,10 +1,11 @@
-import { Link,useColorModeValue, VStack } from '@chakra-ui/react';
+// @ts-check
+import { Link, useColorModeValue, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import KubernetesBlogs from './utils/BlogSection/Kubernetes-blogs';
 import MachineLearningBlogs from './utils/BlogSection/Machine-learning-blogs';
 import OtherBlogs from './utils/BlogSection/other-blogs';
 
-function ReadMyBlogs() {
+function ReadMyBlogs({ kubBlogs, machineBlogs, otherBlogs }) {
   const LinkItem = ({ href, path, _target, children, ...props }) => {
     const active = path === href
     const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
@@ -23,17 +24,16 @@ function ReadMyBlogs() {
     )
   }
 
-  const pickBg = useColorModeValue("rgba(255,255,255,0.4)","rgba(11, 11, 11, 0.4)")
-  
+  const pickBg = useColorModeValue("rgba(255,255,255,0.4)", "rgba(11, 11, 11, 0.4)")
+
   return (
     <>
-      <KubernetesBlogs/>
-      <MachineLearningBlogs/>
-      <OtherBlogs/>
+      <KubernetesBlogs kubernetesBlogs={kubBlogs} />
+      <MachineLearningBlogs machineBlogs={machineBlogs} />
+      <OtherBlogs otherBlogs={otherBlogs} />
     </>
   )
 }
 
 export default ReadMyBlogs
 
- 
