@@ -2,16 +2,10 @@ import { getDocs, query, collection, where } from "firebase/firestore";
 import { db } from "../../components/services/firebase";
 import ReadBlogComponent from "../../components/pages/Read-Blogs/Blogid";
 import Footer from '../../components/utils/universal/Footer';
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export default function BlogId({ data }) {
-  const { isFallback, replace } = useRouter();
 
-  useEffect(() => { if (isFallback) { replace('/blogs') } });
-
-
-  return isFallback ? null : (
+  return (
     <>
       <ReadBlogComponent data={data} />
       <Footer />
@@ -46,7 +40,7 @@ export async function getStaticPaths() {
   // console.log('Printing Paths => ', paths)
 
   return {
-    paths, fallback: true
+    paths, fallback: false
   }
 }
 
