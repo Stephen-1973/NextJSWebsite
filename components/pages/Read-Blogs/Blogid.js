@@ -110,7 +110,7 @@ function BlogId({ data }) {
       </Head>
       <Box mt='10'>
         <div id='root'>
-          <object style={{ width: "100vw", height: "100vh" }} type="text/html" data={`https://stephen-1973.github.io/read/elasticsearch-with-helm/index.html`}></object>
+          <object style={{ width: "100vw", height: "100vh" }} type="text/html" data={doc.website_url}></object>
         </div>
       </Box>
       {/* <Script src={doc.scriptSource} strategy='lazyOnload' onLoad={() => {setShowNextBlogs(true)}}></Script> */}
