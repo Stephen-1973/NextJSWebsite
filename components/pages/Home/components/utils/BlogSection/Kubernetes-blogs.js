@@ -1,8 +1,5 @@
 // @ts-check
 import { Box, Button, Heading, Link, Stack, Text, VStack } from "@chakra-ui/react"
-import { query, where, getDocs, collection } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { db } from "../../../../../services/firebase";
 import BlogPostsWithImages from "./utils/Blog-display-card";
 import NextLink from 'next/link';
 import Router from "next/router";
@@ -24,7 +21,7 @@ function KubernetesBlogs({ kubernetesBlogs }) {
             Discover
           </Button>
         </VStack>
-        <Stack direction={['column', 'column', 'row']} h={['fit-content', 'fit-content', 'auto']} overflow='auto' mt={"10rem"}>
+        <Stack direction={'row'} h={['fit-content', 'fit-content', 'auto']} overflow='auto' mt={"10rem"}>
           {
             kubernetesBlogs.map((blogData, index) => {
               return (
